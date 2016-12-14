@@ -36,12 +36,12 @@ char  callsign[15]={"NO1LIC-1"}; // put your callsign here
 //***************************************************
 
 //********** frame delay in msec**********
-#define tx_delay	100    // 2500 ~2,5  w polu flaga wpisywany jest tx_delay/1000 modulo 16 czyl;i dla 16000 bedzie 0 póki co.
+#define tx_delay	100    // 2500 ~2,5  w polu flaga wpisywany jest tx_delay/1000 modulo 16 czyl;i dla 16000 bedzie 0 pÃ³ki co.
 
 //**************end config**************
 
 //************ do not touch bellow this line;) *********************
-#define gen_div		3	//Sta³a nie zmieniac
+#define gen_div		3	//StaÅ‚a nie zmieniac
 #define gen 	((26.0/gen_div) *(fbsel+1)) //26 ->26MHZ kwarc napedzajacy nadajnik
 #define fc		(((freq/gen) - fb - 24) * 64000)
 
@@ -306,28 +306,7 @@ while(1)
 		flaga &= ~0x80;
 		}
 
-	if (bCheckKay)
-		{
-		if ((ADCVal[1]- Button ) >= 100)
-			{
-			if (cun_off> 2)
-				{
-				bOFF =1;
-				cun_off = 2;
-				}
-			}
-		else
-			{
-			Button = ADCVal[1];
-			cun_off = 0;
-			if (bOFF)
-				{
-				GPIO_SetBits(GPIOA, OFF);
-				}
 
-			}
-		bCheckKay = 0;
-	}
 
 	if (tx_on == 0 && tx_enable)
 	{
